@@ -7,7 +7,6 @@ import { User, Calendar, Stethoscope, Phone, Droplets, AlertCircle, Pill, Buildi
 const PersonalDetails = () => {
   const [fullName, setFullName] = useState('');
   const [pregnancyWeeks, setPregnancyWeeks] = useState('');
-  const [pregnancyMonths, setPregnancyMonths] = useState('');
   const [doctorName, setDoctorName] = useState('');
   const [countryCode] = useState('+91');
   const [doctorNumber, setDoctorNumber] = useState('');
@@ -25,13 +24,6 @@ const PersonalDetails = () => {
     const num = parseInt(value);
     if (value === '' || (num >= 0 && num <= 38)) {
       setPregnancyWeeks(value);
-    }
-  };
-
-  const handleMonthsChange = (value: string) => {
-    const num = parseInt(value);
-    if (value === '' || (num >= 0 && num <= 9)) {
-      setPregnancyMonths(value);
     }
   };
 
@@ -56,7 +48,6 @@ const PersonalDetails = () => {
   const isFormValid = 
     fullName.trim() !== '' &&
     pregnancyWeeks !== '' &&
-    pregnancyMonths !== '' &&
     doctorName.trim() !== '' &&
     isPhoneValid &&
     bloodType.trim() !== '' &&
@@ -69,7 +60,6 @@ const PersonalDetails = () => {
       saveDetails({
         fullName,
         pregnancyWeeks: parseInt(pregnancyWeeks),
-        pregnancyMonths: parseInt(pregnancyMonths),
         doctorName,
         doctorNumber: `${countryCode} ${doctorNumber}`,
         bloodType,
@@ -124,23 +114,6 @@ const PersonalDetails = () => {
                 placeholder="32"
                 value={pregnancyWeeks}
                 onChange={(e) => handleWeeksChange(e.target.value)}
-                className="w-12 text-right bg-transparent border-none outline-none text-gray-700"
-              />
-              <ChevronRight className="w-4 h-4" style={{ color: '#9CA3AF' }} />
-            </div>
-
-            {/* Pregnancy Months */}
-            <div className="flex items-center gap-3 p-3 rounded-xl" style={{ backgroundColor: 'white' }}>
-              <Calendar className="w-5 h-5" style={{ color: '#E8847C' }} />
-              <span className="text-sm" style={{ color: '#6B7280' }}>Pregnancy Months</span>
-              <div className="flex-1" />
-              <input
-                type="number"
-                min="0"
-                max="9"
-                placeholder="8"
-                value={pregnancyMonths}
-                onChange={(e) => handleMonthsChange(e.target.value)}
                 className="w-12 text-right bg-transparent border-none outline-none text-gray-700"
               />
               <ChevronRight className="w-4 h-4" style={{ color: '#9CA3AF' }} />
