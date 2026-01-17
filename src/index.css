@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 160 30% 97%;
+    --foreground: 200 20% 20%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 200 20% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 200 20% 20%;
+
+    --primary: 174 58% 40%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 160 40% 94%;
+    --secondary-foreground: 174 58% 35%;
+
+    --muted: 160 20% 94%;
+    --muted-foreground: 200 10% 50%;
+
+    --accent: 6 78% 65%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 152 60% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 45 93% 55%;
+    --warning-foreground: 200 20% 20%;
+
+    --border: 160 20% 88%;
+    --input: 160 20% 88%;
+    --ring: 174 58% 40%;
+
+    --radius: 1rem;
+
+    /* Custom Janani colors */
+    --janani-teal: 174 58% 40%;
+    --janani-teal-light: 174 50% 85%;
+    --janani-teal-dark: 174 60% 30%;
+    --janani-coral: 6 78% 65%;
+    --janani-coral-light: 6 78% 92%;
+    --janani-mint: 160 40% 94%;
+    --janani-cream: 40 40% 96%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(180deg, hsl(174 58% 45%) 0%, hsl(174 50% 60%) 50%, hsl(40 40% 90%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(160 30% 98%) 100%);
+    --gradient-alert: linear-gradient(180deg, hsl(6 78% 70%) 0%, hsl(6 78% 65%) 100%);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 200 20% 10%;
+    --foreground: 160 20% 95%;
+
+    --card: 200 20% 15%;
+    --card-foreground: 160 20% 95%;
+
+    --popover: 200 20% 15%;
+    --popover-foreground: 160 20% 95%;
+
+    --primary: 174 58% 50%;
+    --primary-foreground: 200 20% 10%;
+
+    --secondary: 200 20% 20%;
+    --secondary-foreground: 160 20% 95%;
+
+    --muted: 200 15% 20%;
+    --muted-foreground: 160 10% 60%;
+
+    --accent: 6 78% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 200 15% 25%;
+    --input: 200 15% 25%;
+    --ring: 174 58% 50%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer components {
+  .janani-gradient-bg {
+    background: var(--gradient-hero);
+  }
+
+  .janani-card {
+    @apply bg-card rounded-2xl shadow-sm border border-border/50;
+    background: var(--gradient-card);
+  }
+
+  .janani-input {
+    @apply w-full px-4 py-3 bg-white/90 backdrop-blur-sm rounded-xl border border-border/50 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all;
+  }
+
+  .janani-btn-primary {
+    @apply w-full py-3.5 bg-accent text-accent-foreground font-semibold rounded-xl shadow-lg shadow-accent/30 hover:shadow-accent/40 hover:brightness-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none;
+  }
+
+  .janani-btn-secondary {
+    @apply w-full py-3.5 bg-transparent text-primary font-semibold rounded-xl border-2 border-primary hover:bg-primary/10 transition-all duration-200;
+  }
+
+  .janani-vitals-card {
+    @apply flex-1 p-4 rounded-2xl flex flex-col items-center justify-center gap-1;
+  }
+
+  .janani-activity-card {
+    @apply flex items-center gap-3 p-4 bg-card rounded-xl border border-border/50;
+  }
+
+  .janani-nav-item {
+    @apply flex flex-col items-center gap-1 p-2 text-muted-foreground transition-colors;
+  }
+
+  .janani-nav-item.active {
+    @apply text-primary;
+  }
+
+  .janani-form-field {
+    @apply flex items-center gap-3 p-3 bg-white rounded-xl border border-border/50;
+  }
+
+  .janani-checkbox {
+    @apply w-5 h-5 rounded border-2 border-primary accent-primary;
+  }
+
+  /* Diet generator helpers */
+  .diet-card {
+    @apply bg-gray-50 rounded-2xl p-4 border border-border/40;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+  }
+
+  .diet-controls {
+    @apply flex items-center gap-2 flex-wrap;
+    margin-bottom: 0.5rem;
+  }
+
+  .preset-btn {
+    @apply text-xs px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200 transition;
+    border: 1px solid rgba(15,23,42,0.04);
+  }
+
+  .preset-btn.primary {
+    @apply bg-[#3B9B8F] text-white;
+    box-shadow: 0 6px 14px rgba(59,155,143,0.18);
+  }
+
+  .diet-plan {
+    @apply grid grid-cols-1 gap-3;
+  }
+
+  .diet-day {
+    @apply p-3 rounded-xl bg-white border border-border/40;
+    box-shadow: 0 4px 12px rgba(15,23,42,0.04);
+  }
+
+  .meal-title {
+    @apply text-sm font-medium text-[#1F2937] mb-1;
+  }
+
+  .meal-desc {
+    @apply text-xs text-gray-600;
+    line-height: 1.25;
+  }
+
+  .small-pill {
+    @apply inline-block text-xs px-2 py-0.5 rounded-full bg-gray-100 text-gray-700;
+    border: 1px solid rgba(15,23,42,0.03);
+  }
+
+  /* Inputs and textarea inside diet-card */
+  .diet-card textarea, .diet-card input[type="text"], .diet-card input[type="number"] {
+    @apply w-full px-4 py-3 rounded-2xl border border-border/40 bg-white placeholder:text-gray-400;
+  }
+
+  .diet-actions {
+    @apply flex items-center gap-3 flex-wrap;
+  }
+
+  .diet-actions .btn {
+    @apply px-4 py-2 rounded-full text-sm;
+  }
+
+  .diet-actions .btn.primary {
+    @apply bg-[#3B9B8F] text-white;
+    box-shadow: 0 8px 18px rgba(59,155,143,0.16);
+  }
+
+  .diet-actions .btn.ghost {
+    @apply bg-gray-100 text-gray-700;
+  }
+
+  @media (max-width: 640px) {
+    .diet-actions { flex-direction: column; align-items: stretch; }
+    .diet-actions .btn { width: 100%; }
+    .diet-controls { gap: 0.5rem; }
+    .diet-card { padding: 1rem; }
+    .diet-day { padding: 0.75rem; }
+  }
+}
+
+@layer utilities {
+  .text-janani-script {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+  }
+}
